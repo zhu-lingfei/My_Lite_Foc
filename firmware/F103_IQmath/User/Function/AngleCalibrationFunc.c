@@ -9,8 +9,6 @@
 
 
 #include "stdio.h"        //RTT打印
-#include "SEGGER_RTT.h"
-#include "SEGGER_RTT_Conf.h"
 /*************************************************************
 ** Function name:       Motor1AngleCalibration
 ** Descriptions:        电机一角度校准

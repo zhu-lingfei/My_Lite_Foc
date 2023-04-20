@@ -10,17 +10,17 @@
 #include "FocControl.h"
 #include "IQmathLib.h"
 
-//TLE5012B 寄存器地址
+//TLE5012B 瀵勫瓨鍣ㄥ湴鍧�
 #define READ_STATUS            0x8001
 #define READ_ANGLE_VALUE       0x8021
 #define READ_SPEED_VALUE       0x8031
 
 
-//MT6816 寄存器地址
+//MT6816 瀵勫瓨鍣ㄥ湴鍧�
 #define ANGLE_VALUE1           (uint16_t)0x8300
 #define ANGLE_VALUE2           (uint16_t)0x8400
 
-//角度值转化弧度制系数
+//瑙掑害鍊艰浆鍖栧姬搴﹀埗绯绘暟
 #define FOC_EANGLE_TO_ERADIN _IQ19(0.017453293)
 
 

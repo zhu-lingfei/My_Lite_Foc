@@ -4,34 +4,34 @@
 
 
 
-//SVPWMÄ£ĞÍ´´½¨ SVPWM_Mod
+//SVPWMæ¨¡å‹åˆ›å»º SVPWM_Mod
 Svpwm_Struct SVPWM_Mod = 
 {
-    _IQ(0),     //°¢¶û·¨ÖáÄ¿±êµçÑ¹ 	(×î´óÖµÎªÄ¸ÏßµçÑ¹ * sqrt(3) / 3)
-    _IQ(0),     //±´ËşÖáÄ¿±êµçÑ¹   	(×î´óÖµÎªÄ¸ÏßµçÑ¹ * sqrt(3) / 3)
-    _IQ(0),		//ÓÃÓÚÉÈÇøÅĞ¶Ï
-    _IQ(0),		//ÓÃÓÚÉÈÇøÅĞ¶Ï
-    _IQ(0),		//ÓÃÓÚÉÈÇøÅĞ¶Ï
-    _IQ(0),		//0Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//1Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//2Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//3Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//4Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//5Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//6Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),		//7Ê¸Á¿×÷ÓÃÊ±³¤
-    _IQ(0),     //aÏà×÷ÓÃÊ±³¤
-    _IQ(0),     //bÏà×÷ÓÃÊ±³¤
-    _IQ(0),     //cÏà×÷ÓÃÊ±³¤
-    _IQ(50),   //SVPWM ÖÜÆÚ(us)
-    _IQ(7.216878),//SVPWM ÏµÊıK =  sqrt(3) * Ts / Udc = 14.433756729740644112728
-    _IQ(12),    //Ä¸ÏßµçÑ¹
-    0,          //ÉÈÇøË÷Òı
+    _IQ(0),     //é˜¿å°”æ³•è½´ç›®æ ‡ç”µå‹ 	(æœ€å¤§å€¼ä¸ºæ¯çº¿ç”µå‹ * sqrt(3) / 3)
+    _IQ(0),     //è´å¡”è½´ç›®æ ‡ç”µå‹   	(æœ€å¤§å€¼ä¸ºæ¯çº¿ç”µå‹ * sqrt(3) / 3)
+    _IQ(0),		//ç”¨äºæ‰‡åŒºåˆ¤æ–­
+    _IQ(0),		//ç”¨äºæ‰‡åŒºåˆ¤æ–­
+    _IQ(0),		//ç”¨äºæ‰‡åŒºåˆ¤æ–­
+    _IQ(0),		//0çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//1çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//2çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//3çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//4çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//5çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//6çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),		//7çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _IQ(0),     //aç›¸ä½œç”¨æ—¶é•¿
+    _IQ(0),     //bç›¸ä½œç”¨æ—¶é•¿
+    _IQ(0),     //cç›¸ä½œç”¨æ—¶é•¿
+    _IQ(50),   //SVPWM å‘¨æœŸ(us)
+    _IQ(7.216878),//SVPWM ç³»æ•°K =  sqrt(3) * Ts / Udc = 14.433756729740644112728
+    _IQ(12),    //æ¯çº¿ç”µå‹
+    0,          //æ‰‡åŒºç´¢å¼•
 };
 /*************************************************************
 ** Function name:       SectorJudgment
-** Descriptions:        ÉÈÇøÅĞ¶Ï,ÀûÓÃu¦ÁºÍu¦ÂÀ´ÅĞ¶ÏÉÈÇø
-** Input parameters:    pSvpwm£º½á¹¹ÌåÃû×Ö
+** Descriptions:        æ‰‡åŒºåˆ¤æ–­,åˆ©ç”¨uÎ±å’ŒuÎ²æ¥åˆ¤æ–­æ‰‡åŒº
+** Input parameters:    pSvpwmï¼šç»“æ„ä½“åå­—
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -87,8 +87,8 @@ void SvpwmSectorJudgment(Svpwm_Struct *pSvpwm)
 }
 /*************************************************************
 ** Function name:       GetVectorDuration
-** Descriptions:        »ñÈ¡Ê¸Á¿×÷ÓÃÊ±³¤
-** Input parameters:    pSvpwm:½á¹¹ÌåÖ¸Õë
+** Descriptions:        è·å–çŸ¢é‡ä½œç”¨æ—¶é•¿
+** Input parameters:    pSvpwm:ç»“æ„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -133,13 +133,13 @@ void GetVectorDuration(Svpwm_Struct *pSvpwm)
 }
 /*************************************************************
 ** Function name:       SvpwmGenerate
-** Descriptions:        SVPWMÉú³ÉÖÜÆÚº¯Êı
-** Input parameters:    pSvpwm:½á¹¹ÌåÖ¸Õë
+** Descriptions:        SVPWMç”Ÿæˆå‘¨æœŸå‡½æ•°
+** Input parameters:    pSvpwm:ç»“æ„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
 *************************************************************/
-//Debug Âí°°²¨
+//Debug é©¬éæ³¢
 //float tA;
 //float tB;
 //float tC;
@@ -186,10 +186,10 @@ void SvpwmGenerate(Svpwm_Struct *pSvpwm)
 }
 /*************************************************************
 ** Function name:       SvpwmContorol
-** Descriptions:        Svpwm¿ØÖÆ
-** Input parameters:    pSvpwm:½á¹¹ÌåÖ¸Õë
-**                      u¦Á£º°¢¶û·¨ÖáÄ¿±êµçÑ¹
-**                      u¦Â£º±´ËşÖáÄ¿±êµçÑ¹
+** Descriptions:        Svpwmæ§åˆ¶
+** Input parameters:    pSvpwm:ç»“æ„ä½“æŒ‡é’ˆ
+**                      uÎ±ï¼šé˜¿å°”æ³•è½´ç›®æ ‡ç”µå‹
+**                      uÎ²ï¼šè´å¡”è½´ç›®æ ‡ç”µå‹
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -198,19 +198,19 @@ void SvpwmCtrl(_iq uAlpha,_iq uBeta)
 {
     SVPWM_Mod.uAlpha = uAlpha;
     SVPWM_Mod.uBeta  = uBeta;
-    //1.ÉÈÇøÅĞ¶Ï
+    //1.æ‰‡åŒºåˆ¤æ–­
     SvpwmSectorJudgment(&SVPWM_Mod);
-    //2.¼ÆËãÊ¸Á¿×÷ÓÃÊ±³¤
+    //2.è®¡ç®—çŸ¢é‡ä½œç”¨æ—¶é•¿
     GetVectorDuration(&SVPWM_Mod);
-    //3.SVPWMÉú³É
+    //3.SVPWMç”Ÿæˆ
     SvpwmGenerate(&SVPWM_Mod);
 }
 /*************************************************************
 ** Function name:       GetSVPWMSector
-** Descriptions:        »ñÈ¡SVPWMÉÈÇø
+** Descriptions:        è·å–SVPWMæ‰‡åŒº
 ** Input parameters:    None
 ** Output parameters:   None
-** Returned value:      SVPWMÉÈÇø(1-6)
+** Returned value:      SVPWMæ‰‡åŒº(1-6)
 ** Remarks:             None
 *************************************************************/
 uint8_t GetSVPWMSector(void)

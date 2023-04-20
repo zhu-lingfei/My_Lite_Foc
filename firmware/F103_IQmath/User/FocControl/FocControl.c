@@ -8,38 +8,36 @@
 
 
 #include "stdio.h"
-#include "SEGGER_RTT.h"
-#include "SEGGER_RTT_Conf.h"
 
 
-//FOCÄ£ĞÍ´´½¨ FOC_Mod
+//FOCæ¨¡å‹åˆ›å»º FOC_Mod
 FOC_Struct FOC_Mod = 
 {
-     0,         //µç»úÊ¹ÄÜ±êÖ¾
-    _IQ(11),    //¼«¶ÔÊı
+     0,         //ç”µæœºä½¿èƒ½æ ‡å¿—
+    _IQ(11),    //æå¯¹æ•°
 
-    _IQ(0),     //Ä¿±êqµçÁ÷
-    _IQ(0),     //Ä¿±êiµçÁ÷
-    _IQ19(14.501953), //Æ«ÒÆ½Ç¶È£¨Ğ£×¼¹Ì»¯£©
-	  _IQ19(0),   //»úĞµ½Ç¶È
-    _IQ19(0),   //µç½Ç¶È
-    _IQ19(0),   //µç½Ç¶È»¡¶È
-    _IQ(0),     //µç½Ç¶ÈÕıÏÒÖµ£¨·Ç»¡¶È£©
-    _IQ(0),     //µç½Ç¶ÈÓàÏÒÖµ£¨·Ç»¡¶È£©
+    _IQ(0),     //ç›®æ ‡qç”µæµ
+    _IQ(0),     //ç›®æ ‡iç”µæµ
+    _IQ19(14.501953), //åç§»è§’åº¦ï¼ˆæ ¡å‡†å›ºåŒ–ï¼‰
+	  _IQ19(0),   //æœºæ¢°è§’åº¦
+    _IQ19(0),   //ç”µè§’åº¦
+    _IQ19(0),   //ç”µè§’åº¦å¼§åº¦
+    _IQ(0),     //ç”µè§’åº¦æ­£å¼¦å€¼ï¼ˆéå¼§åº¦ï¼‰
+    _IQ(0),     //ç”µè§’åº¦ä½™å¼¦å€¼ï¼ˆéå¼§åº¦ï¼‰
     
-    3,          //µçÁ÷²ÉÑù¸öÊı
-    _IQ(0),     //a ÏàÊµ¼ÊµçÁ÷
-    _IQ(0),     //b ÏàÊµ¼ÊµçÁ÷
-	  _IQ(0),     //c ÏàÊµ¼ÊµçÁ÷
+    3,          //ç”µæµé‡‡æ ·ä¸ªæ•°
+    _IQ(0),     //a ç›¸å®é™…ç”µæµ
+    _IQ(0),     //b ç›¸å®é™…ç”µæµ
+	  _IQ(0),     //c ç›¸å®é™…ç”µæµ
 
-    _IQ(0),     //clarke±ä»»ºó * 2/3ºó I_Alpha
-    _IQ(0),     //clarke±ä»»ºó * 2/3ºó I_Beta
+    _IQ(0),     //clarkeå˜æ¢å * 2/3å I_Alpha
+    _IQ(0),     //clarkeå˜æ¢å * 2/3å I_Beta
 
-    _IQ(0),     //park·´±ä»»ºó I_Alpha_Svpwm
-    _IQ(0),     //park·´±ä»»ºó I_Beta_Svpwm
+    _IQ(0),     //parkåå˜æ¢å I_Alpha_Svpwm
+    _IQ(0),     //parkåå˜æ¢å I_Beta_Svpwm
     
-    _IQ(0),     //park±ä»»ºó Iq
-    _IQ(0),     //park±ä»»ºó Id
+    _IQ(0),     //parkå˜æ¢å Iq
+    _IQ(0),     //parkå˜æ¢å Id
     
     _IQ19(0),   //tarSpeed
     _IQ19(0),   //preSpeed
@@ -53,7 +51,7 @@ FOC_Struct FOC_Mod =
 };
 /*************************************************************
 ** Function name:      FocPID_Init
-** Descriptions:       FOCPID³õÊ¼»¯
+** Descriptions:       FOCPIDåˆå§‹åŒ–
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none
@@ -62,53 +60,53 @@ FOC_Struct FOC_Mod =
 *************************************************************/
 void FocPID_Init(void)
 {
-    //iq PID²ÎÊı³õÊ¼»¯
-    FOC_Mod.iqPID.kp       = _IQ(0.08);  //±ÈÀı
-    FOC_Mod.iqPID.ki       = _IQ(0.008);  //»ı·Ö
-    FOC_Mod.iqPID.kd       = _IQ(0);  //Î¢·Ö
-    FOC_Mod.iqPID.pre      = _IQ(0);  //Êµ¼ÊÖµ
-    FOC_Mod.iqPID.tar      = _IQ(0);  //Ä¿±êÖµ
-    FOC_Mod.iqPID.bias     = _IQ(0);  //±¾´ÎÆ«²î
-    FOC_Mod.iqPID.lastBias = _IQ(0);  //ÉÏ´ÎÆ«²î
-    FOC_Mod.iqPID.out      = _IQ(0);  //PIDÊä³ö
-    FOC_Mod.iqPID.outMax   = _IQ(7);  //PIDÊä³öÏŞ·ù
-    //id PID²ÎÊı³õÊ¼»¯
-    FOC_Mod.idPID.kp       = _IQ(0.04);  //±ÈÀı
-    FOC_Mod.idPID.ki       = _IQ(0.08);  //»ı·Ö
-    FOC_Mod.idPID.kd       = _IQ(0);  //Î¢·Ö
-    FOC_Mod.idPID.pre      = _IQ(0);  //Êµ¼ÊÖµ
-    FOC_Mod.idPID.tar      = _IQ(0);  //Ä¿±êÖµ
-    FOC_Mod.idPID.bias     = _IQ(0);  //±¾´ÎÆ«²î
-    FOC_Mod.idPID.lastBias = _IQ(0);  //ÉÏ´ÎÆ«²î
-    FOC_Mod.idPID.out      = _IQ(0);  //PIDÊä³ö
-    FOC_Mod.idPID.outMax   = _IQ(4.8);  //PIDÊä³öÏŞ·ù
-    //Speed PID²ÎÊı³õÊ¼»¯
-    FOC_Mod.sPID.kp        = _IQ19(4.8);  //±ÈÀı
-    FOC_Mod.sPID.ki        = _IQ19(0.03);  //»ı·Ö
-    FOC_Mod.sPID.kd        = _IQ19(0);  //Î¢·Ö
-    FOC_Mod.sPID.pre       = _IQ19(0);  //Êµ¼ÊÖµ
-    FOC_Mod.sPID.tar       = _IQ19(0);  //Ä¿±êÖµ
-    FOC_Mod.sPID.bias      = _IQ19(0);  //±¾´ÎÆ«²î
-    FOC_Mod.sPID.lastBias  = _IQ19(0);  //ÉÏ´ÎÆ«²î
-    FOC_Mod.sPID.err       = _IQ19(0);  //ÀÛ¼ÆÆ«²î
-    FOC_Mod.sPID.out       = _IQ19(0);  //PIDÊä³ö
-    FOC_Mod.sPID.outMax    = _IQ19(6.6f);  //PIDÊä³öÏŞ·ù
-    //Position PID²ÎÊı³õÊ¼»¯
-    FOC_Mod.pPID.kp        = _IQ19(0.2);  //±ÈÀı
-    FOC_Mod.pPID.ki        = _IQ19(0.0);  //»ı·Ö
-    FOC_Mod.pPID.kd        = _IQ19(2.2);  //Î¢·Ö
-    FOC_Mod.pPID.pre       = _IQ19(0);  //Êµ¼ÊÖµ
-    FOC_Mod.pPID.tar       = _IQ19(0);  //Ä¿±êÖµ
-    FOC_Mod.pPID.bias      = _IQ19(0);  //±¾´ÎÆ«²î
-    FOC_Mod.pPID.lastBias  = _IQ19(0);  //ÉÏ´ÎÆ«²î
-    FOC_Mod.pPID.err       = _IQ19(0);  //ÀÛ¼ÆÆ«²î
-    FOC_Mod.pPID.out       = _IQ19(0);  //PIDÊä³ö
-    FOC_Mod.pPID.outMax    = _IQ19(4.0);  //PIDÊä³öÏŞ·ù
+    //iq PIDå‚æ•°åˆå§‹åŒ–
+    FOC_Mod.iqPID.kp       = _IQ(0.08);  //æ¯”ä¾‹
+    FOC_Mod.iqPID.ki       = _IQ(0.008);  //ç§¯åˆ†
+    FOC_Mod.iqPID.kd       = _IQ(0);  //å¾®åˆ†
+    FOC_Mod.iqPID.pre      = _IQ(0);  //å®é™…å€¼
+    FOC_Mod.iqPID.tar      = _IQ(0);  //ç›®æ ‡å€¼
+    FOC_Mod.iqPID.bias     = _IQ(0);  //æœ¬æ¬¡åå·®
+    FOC_Mod.iqPID.lastBias = _IQ(0);  //ä¸Šæ¬¡åå·®
+    FOC_Mod.iqPID.out      = _IQ(0);  //PIDè¾“å‡º
+    FOC_Mod.iqPID.outMax   = _IQ(7);  //PIDè¾“å‡ºé™å¹…
+    //id PIDå‚æ•°åˆå§‹åŒ–
+    FOC_Mod.idPID.kp       = _IQ(0.04);  //æ¯”ä¾‹
+    FOC_Mod.idPID.ki       = _IQ(0.08);  //ç§¯åˆ†
+    FOC_Mod.idPID.kd       = _IQ(0);  //å¾®åˆ†
+    FOC_Mod.idPID.pre      = _IQ(0);  //å®é™…å€¼
+    FOC_Mod.idPID.tar      = _IQ(0);  //ç›®æ ‡å€¼
+    FOC_Mod.idPID.bias     = _IQ(0);  //æœ¬æ¬¡åå·®
+    FOC_Mod.idPID.lastBias = _IQ(0);  //ä¸Šæ¬¡åå·®
+    FOC_Mod.idPID.out      = _IQ(0);  //PIDè¾“å‡º
+    FOC_Mod.idPID.outMax   = _IQ(4.8);  //PIDè¾“å‡ºé™å¹…
+    //Speed PIDå‚æ•°åˆå§‹åŒ–
+    FOC_Mod.sPID.kp        = _IQ19(4.8);  //æ¯”ä¾‹
+    FOC_Mod.sPID.ki        = _IQ19(0.03);  //ç§¯åˆ†
+    FOC_Mod.sPID.kd        = _IQ19(0);  //å¾®åˆ†
+    FOC_Mod.sPID.pre       = _IQ19(0);  //å®é™…å€¼
+    FOC_Mod.sPID.tar       = _IQ19(0);  //ç›®æ ‡å€¼
+    FOC_Mod.sPID.bias      = _IQ19(0);  //æœ¬æ¬¡åå·®
+    FOC_Mod.sPID.lastBias  = _IQ19(0);  //ä¸Šæ¬¡åå·®
+    FOC_Mod.sPID.err       = _IQ19(0);  //ç´¯è®¡åå·®
+    FOC_Mod.sPID.out       = _IQ19(0);  //PIDè¾“å‡º
+    FOC_Mod.sPID.outMax    = _IQ19(6.6f);  //PIDè¾“å‡ºé™å¹…
+    //Position PIDå‚æ•°åˆå§‹åŒ–
+    FOC_Mod.pPID.kp        = _IQ19(0.2);  //æ¯”ä¾‹
+    FOC_Mod.pPID.ki        = _IQ19(0.0);  //ç§¯åˆ†
+    FOC_Mod.pPID.kd        = _IQ19(2.2);  //å¾®åˆ†
+    FOC_Mod.pPID.pre       = _IQ19(0);  //å®é™…å€¼
+    FOC_Mod.pPID.tar       = _IQ19(0);  //ç›®æ ‡å€¼
+    FOC_Mod.pPID.bias      = _IQ19(0);  //æœ¬æ¬¡åå·®
+    FOC_Mod.pPID.lastBias  = _IQ19(0);  //ä¸Šæ¬¡åå·®
+    FOC_Mod.pPID.err       = _IQ19(0);  //ç´¯è®¡åå·®
+    FOC_Mod.pPID.out       = _IQ19(0);  //PIDè¾“å‡º
+    FOC_Mod.pPID.outMax    = _IQ19(4.0);  //PIDè¾“å‡ºé™å¹…
 }
 
 /*************************************************************
 ** Function name:      FocControl_Init
-** Descriptions:       FOC¿ØÖÆ³õÊ¼»¯
+** Descriptions:       FOCæ§åˆ¶åˆå§‹åŒ–
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none
@@ -117,16 +115,16 @@ void FocPID_Init(void)
 *************************************************************/
 void FocControl_Init(void)
 {
-    FocPID_Init();                        //FOCËùÓĞPID²ÎÊı³õÊ¼»¯
-    FocMotor_Enable(0);                   //FOCÊ¹ÄÜ³õÊ¼»¯  Ê§ÄÜ
-	  Motor1PosPIDSetTar(_IQ19(80));         //Ä¿±êÎ»ÖÃ³õÊ¼»¯0
-	  Motor1SpeedPIDSetTar(_IQ19(0));       //Ä¿±êËÙ¶È³õÊ¼»¯0
-    Motor1SetTarIDIQ(_IQ(0.0),_IQ(0.0));  //Ä¿±êµçÁ÷³õÊ¼»¯0
+    FocPID_Init();                        //FOCæ‰€æœ‰PIDå‚æ•°åˆå§‹åŒ–
+    FocMotor_Enable(0);                   //FOCä½¿èƒ½åˆå§‹åŒ–  å¤±èƒ½
+	  Motor1PosPIDSetTar(_IQ19(80));         //ç›®æ ‡ä½ç½®åˆå§‹åŒ–0
+	  Motor1SpeedPIDSetTar(_IQ19(0));       //ç›®æ ‡é€Ÿåº¦åˆå§‹åŒ–0
+    Motor1SetTarIDIQ(_IQ(0.0),_IQ(0.0));  //ç›®æ ‡ç”µæµåˆå§‹åŒ–0
 }
 
 /*************************************************************
 ** Function name:      FocMotor_Enable
-** Descriptions:       FOCµç»ú¿ØÖÆÊ¹ÄÜ
+** Descriptions:       FOCç”µæœºæ§åˆ¶ä½¿èƒ½
 ** Input parameters:   200us
 ** Output parameters:  none
 ** Returned value:     none
@@ -135,13 +133,13 @@ void FocControl_Init(void)
 *************************************************************/
 void FocMotor_Enable(uint8_t able)
 {
-	 Motor1SetEnable(able);   //µç»úÇı¶¯Ê¹ÄÜ
-	  FOC_Mod.isEnable = 1;    //FOCÔËËãÊ¹ÄÜ
+	 Motor1SetEnable(able);   //ç”µæœºé©±åŠ¨ä½¿èƒ½
+	  FOC_Mod.isEnable = 1;    //FOCè¿ç®—ä½¿èƒ½
 }
 
 /*************************************************************
 ** Function name:      GetMotor_mAngle
-** Descriptions:       »ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶È
+** Descriptions:       è·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none
@@ -156,9 +154,9 @@ _iq19 GetMotor_mAngle(void)
 
 /*************************************************************
 ** Function name:       Motor1SetTarIDIQ
-** Descriptions:        ÉèÖÃµç»ú1Ä¿±êµçÁ÷
-** Input parameters:    id£ºdÖáµçÁ÷µ¥Î»A
-**						iq: qÖáµçÁ÷µ¥Î»A
+** Descriptions:        è®¾ç½®ç”µæœº1ç›®æ ‡ç”µæµ
+** Input parameters:    idï¼šdè½´ç”µæµå•ä½A
+**						iq: qè½´ç”µæµå•ä½A
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -170,8 +168,8 @@ void Motor1SetTarIDIQ(_iq id,_iq iq)
 }
 /*************************************************************
 ** Function name:       Motor1PosPIDSetTar
-** Descriptions:        ÉèÖÃµç»ú1Ä¿±êÎ»ÖÃ
-** Input parameters:    tarPos£ºÄ¿±êÎ»ÖÃ -180 0 180
+** Descriptions:        è®¾ç½®ç”µæœº1ç›®æ ‡ä½ç½®
+** Input parameters:    tarPosï¼šç›®æ ‡ä½ç½® -180 0 180
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -182,8 +180,8 @@ void Motor1PosPIDSetTar(_iq19 tarPos)
 }
 /*************************************************************
 ** Function name:       Motor1SpeedPIDSetTar
-** Descriptions:        ÉèÖÃµç»ú1Ä¿±ê×ªËÙ
-** Input parameters:    tarSpeed£ºÄ¿±ê×ªËÙ
+** Descriptions:        è®¾ç½®ç”µæœº1ç›®æ ‡è½¬é€Ÿ
+** Input parameters:    tarSpeedï¼šç›®æ ‡è½¬é€Ÿ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -194,7 +192,7 @@ void Motor1SpeedPIDSetTar(_iq19 tarSpeed)
 }
 /*************************************************************
 ** Function name:      FocPosControl_Loop
-** Descriptions:       FOCÎ»ÖÃ±Õ»·¿ØÖÆÑ­»·
+** Descriptions:       FOCä½ç½®é—­ç¯æ§åˆ¶å¾ªç¯
 ** Input parameters:   200us
 ** Output parameters:  none
 ** Returned value:     none
@@ -208,7 +206,7 @@ void FocPosControl_Loop(void)
 
 /*************************************************************
 ** Function name:      FocSpeedControl_Loop
-** Descriptions:       FOCËÙ¶È±Õ»·¿ØÖÆÑ­»·
+** Descriptions:       FOCé€Ÿåº¦é—­ç¯æ§åˆ¶å¾ªç¯
 ** Input parameters:   200us
 ** Output parameters:  none
 ** Returned value:     none
@@ -222,7 +220,7 @@ void FocSpeedControl_Loop(void)
 
 /*************************************************************
 ** Function name:      FocControl_Loop
-** Descriptions:       FOC¿ØÖÆÑ­»·
+** Descriptions:       FOCæ§åˆ¶å¾ªç¯
 ** Input parameters:   100us
 ** Output parameters:  none
 ** Returned value:     none
@@ -231,22 +229,22 @@ void FocSpeedControl_Loop(void)
 *************************************************************/
 void FocControl_Loop(void)
 {
-    GetMotor1_ElectricalAngleMT6816(&FOC_Mod);              //Step-> 1  »ñÈ¡µç»ú µ±Ç°ËùÓĞµçÆø½Ç¶ÈĞÅÏ¢
-    CurrentReconstruction(&FOC_Mod);                        //Step-> 2  »ñÈ¡ÈıÏàµçÁ÷£¬ÖØ¹¹µçÁ÷
-    clarke_calc(&FOC_Mod);                                  //Step-> 3  Clarke±ä»»
-    park_calc(&FOC_Mod);                                    //Step-> 4  Park±ä»»
-    CurrentPIControlID(&FOC_Mod);                           //Step-> 5  µçÁ÷PI±Õ»·Êä³ö
+    GetMotor1_ElectricalAngleMT6816(&FOC_Mod);              //Step-> 1  è·å–ç”µæœº å½“å‰æ‰€æœ‰ç”µæ°”è§’åº¦ä¿¡æ¯
+    CurrentReconstruction(&FOC_Mod);                        //Step-> 2  è·å–ä¸‰ç›¸ç”µæµï¼Œé‡æ„ç”µæµ
+    clarke_calc(&FOC_Mod);                                  //Step-> 3  Clarkeå˜æ¢
+    park_calc(&FOC_Mod);                                    //Step-> 4  Parkå˜æ¢
+    CurrentPIControlID(&FOC_Mod);                           //Step-> 5  ç”µæµPIé—­ç¯è¾“å‡º
     CurrentPIControlIQ(&FOC_Mod);
 /*
-    FOC_Mod.idPID.out = _IQ(0.0); //¿ª»·²âÊÔ,Õı³£ÔËĞĞÒ»¶¨Òª×¢ÊÍµô
-    FOC_Mod.iqPID.out = _IQ(7.0); //¿ª»·²âÊÔ,Õı³£ÔËĞĞÒ»¶¨Òª×¢ÊÍµô
+    FOC_Mod.idPID.out = _IQ(0.0); //å¼€ç¯æµ‹è¯•,æ­£å¸¸è¿è¡Œä¸€å®šè¦æ³¨é‡Šæ‰
+    FOC_Mod.iqPID.out = _IQ(7.0); //å¼€ç¯æµ‹è¯•,æ­£å¸¸è¿è¡Œä¸€å®šè¦æ³¨é‡Šæ‰
 */
-    ipark_calc(&FOC_Mod);                                   //Step-> 6  ·´park±ä»»
-    SvpwmCtrl(FOC_Mod.I_Alpha_Svpwm,FOC_Mod.I_Beta_Svpwm);  //Step-> 7  Éú³ÉSVPWM
+    ipark_calc(&FOC_Mod);                                   //Step-> 6  åparkå˜æ¢
+    SvpwmCtrl(FOC_Mod.I_Alpha_Svpwm,FOC_Mod.I_Beta_Svpwm);  //Step-> 7  ç”ŸæˆSVPWM
 }
 /*************************************************************
 ** Function name:      FocControl_Loop
-** Descriptions:       FOC¿ØÖÆÑ­»·
+** Descriptions:       FOCæ§åˆ¶å¾ªç¯
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none

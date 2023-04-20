@@ -13,26 +13,26 @@
 
 typedef struct 
 {
-    _iq uAlpha; //°¢¶û·¨ÖáÄ¿±êµçÑ¹ 	(×î´óÖµÎªÄ¸ÏßµçÑ¹ * sqrt(3) / 3)
-    _iq uBeta;  //±´ËþÖáÄ¿±êµçÑ¹   	(×î´óÖµÎªÄ¸ÏßµçÑ¹ * sqrt(3) / 3)
-    _iq u1;		//ÓÃÓÚÉÈÇøÅÐ¶Ï
-    _iq u2;		//ÓÃÓÚÉÈÇøÅÐ¶Ï
-    _iq u3;		//ÓÃÓÚÉÈÇøÅÐ¶Ï
-    _iq t0;		//0Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t1;		//1Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t2;		//2Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t3;		//3Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t4;		//4Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t5;		//5Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t6;		//6Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq t7;		//7Ê¸Á¿×÷ÓÃÊ±³¤
-    _iq ta;		//aÏà×÷ÓÃÊ±³¤
-    _iq tb;		//bÏà×÷ÓÃÊ±³¤
-    _iq tc;		//cÏà×÷ÓÃÊ±³¤
-    _iq ts;		//SVPWMÖÜÆÚ
-    _iq K;		//SVPWM ÏµÊýK =  sqrt(3) * Ts / Udc
-    _iq udc;       //Ä¸ÏßµçÑ¹
-    uint8_t sector;//ÉÈÇøË÷Òý
+    _iq uAlpha; //é˜¿å°”æ³•è½´ç›®æ ‡ç”µåŽ‹ 	(æœ€å¤§å€¼ä¸ºæ¯çº¿ç”µåŽ‹ * sqrt(3) / 3)
+    _iq uBeta;  //è´å¡”è½´ç›®æ ‡ç”µåŽ‹   	(æœ€å¤§å€¼ä¸ºæ¯çº¿ç”µåŽ‹ * sqrt(3) / 3)
+    _iq u1;		//ç”¨äºŽæ‰‡åŒºåˆ¤æ–­
+    _iq u2;		//ç”¨äºŽæ‰‡åŒºåˆ¤æ–­
+    _iq u3;		//ç”¨äºŽæ‰‡åŒºåˆ¤æ–­
+    _iq t0;		//0çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t1;		//1çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t2;		//2çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t3;		//3çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t4;		//4çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t5;		//5çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t6;		//6çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq t7;		//7çŸ¢é‡ä½œç”¨æ—¶é•¿
+    _iq ta;		//aç›¸ä½œç”¨æ—¶é•¿
+    _iq tb;		//bç›¸ä½œç”¨æ—¶é•¿
+    _iq tc;		//cç›¸ä½œç”¨æ—¶é•¿
+    _iq ts;		//SVPWMå‘¨æœŸ
+    _iq K;		//SVPWM ç³»æ•°K =  sqrt(3) * Ts / Udc
+    _iq udc;       //æ¯çº¿ç”µåŽ‹
+    uint8_t sector;//æ‰‡åŒºç´¢å¼•
 }Svpwm_Struct;
 extern Svpwm_Struct SVPWM_Mod;
 

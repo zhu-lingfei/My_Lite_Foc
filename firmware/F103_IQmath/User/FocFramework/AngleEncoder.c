@@ -4,13 +4,11 @@
 #include "main.h"
 
 #include "stdio.h"
-#include "SEGGER_RTT.h"
-#include "SEGGER_RTT_Conf.h"
 
 
 /*************************************************************
 ** Function name:       ReadTLE5012BAngle_IQ
-** Descriptions:        TLE5012B»ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶ÈÖµ
+** Descriptions:        TLE5012Bè·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦å€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -29,7 +27,7 @@ void GetMotor1_ElectricalAngleTle5012(FOC_Struct *pFOC)
 	data = Motor1SPI1ReadData();
 	Motor1SPI1SetCS(1);
     
-	data &= 0x7FFF;//¼Ä´æÆ÷Êı¾İ
+	data &= 0x7FFF;//å¯„å­˜å™¨æ•°æ®
 	dataBuf_iq16 = _IQ16div(_IQ16((float)data),_IQ16(32767.0f));
 
 	mangle = _IQ19mpy(_IQtoIQ19(_IQ16toIQ(dataBuf_iq16)), _IQ19(360.0f)) - pFOC->mAngle_Offect;
@@ -39,15 +37,15 @@ void GetMotor1_ElectricalAngleTle5012(FOC_Struct *pFOC)
 	while(eAngleBuf>_IQ19(360.0)) eAngleBuf -= _IQ19(360.0);
 	
 
-	pFOC->mAngle  = mangle;                                       //»ñµÃµ±Ç°»úĞµ½Ç¶Èiq19
-	pFOC->eAngle  = eAngleBuf;                                    //»ñµÃµ±Ç°µç½Ç¶Èiq19
-	pFOC->eRadian = _IQ19mpy(pFOC->eAngle , FOC_EANGLE_TO_ERADIN);//»ñµÃµ±Ç°µç½Ç¶È£¨»¡¶È£©iq19
-	pFOC->eAngleSine   = _IQ19toIQ(_IQ19sin(pFOC->eRadian));      //»ñµÃµ±Ç°µç½Ç¶ÈÕıÏÒÖµ£¨»¡¶È£©iq
-	pFOC->eAngleCosine = _IQ19toIQ(_IQ19cos(pFOC->eRadian));      //»ñµÃµ±Ç°µç½Ç¶ÈÓàÏÒÖµ£¨»¡¶È£©iq
+	pFOC->mAngle  = mangle;                                       //è·å¾—å½“å‰æœºæ¢°è§’åº¦iq19
+	pFOC->eAngle  = eAngleBuf;                                    //è·å¾—å½“å‰ç”µè§’åº¦iq19
+	pFOC->eRadian = _IQ19mpy(pFOC->eAngle , FOC_EANGLE_TO_ERADIN);//è·å¾—å½“å‰ç”µè§’åº¦ï¼ˆå¼§åº¦ï¼‰iq19
+	pFOC->eAngleSine   = _IQ19toIQ(_IQ19sin(pFOC->eRadian));      //è·å¾—å½“å‰ç”µè§’åº¦æ­£å¼¦å€¼ï¼ˆå¼§åº¦ï¼‰iq
+	pFOC->eAngleCosine = _IQ19toIQ(_IQ19cos(pFOC->eRadian));      //è·å¾—å½“å‰ç”µè§’åº¦ä½™å¼¦å€¼ï¼ˆå¼§åº¦ï¼‰iq
 }
 /*************************************************************
 ** Function name:       GetMotor1_ElectricalAngleMT6816
-** Descriptions:        MT6816»ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶ÈÖµ
+** Descriptions:        MT6816è·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦å€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -62,33 +60,33 @@ void GetMotor1_ElectricalAngleMT6816(FOC_Struct *pFOC)
 	uint16_t data_r[3];
 	
 	Motor1SPI1SetCS(0);
-	data_r[0] = Motor1SPI1WriteReadData(ANGLE_VALUE1); //¶ÁÈ¡¸ßÎ»
+	data_r[0] = Motor1SPI1WriteReadData(ANGLE_VALUE1); //è¯»å–é«˜ä½
 	Motor1SPI1SetCS(1);
 
 	Motor1SPI1SetCS(0);
-  data_r[1] = Motor1SPI1WriteReadData(ANGLE_VALUE2); //¶ÁÈ¡µÍÎ»
+  data_r[1] = Motor1SPI1WriteReadData(ANGLE_VALUE2); //è¯»å–ä½ä½
 	Motor1SPI1SetCS(1);
 	
-	data_r[2] = (((data_r[0] & 0x00FF)<<6)|((data_r[1]& 0x00FF)>>2)); //ºÏ³É¼Ä´æÆ÷ÍêÕûÊı¾İ
+	data_r[2] = (((data_r[0] & 0x00FF)<<6)|((data_r[1]& 0x00FF)>>2)); //åˆæˆå¯„å­˜å™¨å®Œæ•´æ•°æ®
 	
 	
-	dataBuf_iq16 = _IQ16div(_IQ16((float)data_r[2]),_IQ16(16384.0f)); //»»ËãÎª 0-360¡ã
+	dataBuf_iq16 = _IQ16div(_IQ16((float)data_r[2]),_IQ16(16384.0f)); //æ¢ç®—ä¸º 0-360Â°
 
-	mangle = _IQ19mpy(_IQtoIQ19(_IQ16toIQ(dataBuf_iq16)), _IQ19(360.0f)) - pFOC->mAngle_Offect;  //¼õÈ¥ÁãÆ«½Ç¶È µÃµ½µ±Ç°ÕæÊµ»úĞµ½Ç¶È
+	mangle = _IQ19mpy(_IQtoIQ19(_IQ16toIQ(dataBuf_iq16)), _IQ19(360.0f)) - pFOC->mAngle_Offect;  //å‡å»é›¶åè§’åº¦ å¾—åˆ°å½“å‰çœŸå®æœºæ¢°è§’åº¦
 	if(mangle< _IQ19(0)) mangle += _IQ19(360.0f);
 	
 	eAngleBuf = _IQ19mpy(mangle,_IQtoIQ19(pFOC->polePairs));
 	while(eAngleBuf>_IQ19(360.0)) eAngleBuf -= _IQ19(360.0);
 	
-	pFOC->mAngle  = mangle;                                       //»ñµÃµ±Ç°»úĞµ½Ç¶Èiq19
-	pFOC->eAngle  = eAngleBuf;                                    //»ñµÃµ±Ç°µç½Ç¶Èiq19
-	pFOC->eRadian = _IQ19mpy(pFOC->eAngle , FOC_EANGLE_TO_ERADIN);//»ñµÃµ±Ç°µç½Ç¶È£¨»¡¶È£©iq19
-	pFOC->eAngleSine   = _IQ19toIQ(_IQ19sin(pFOC->eRadian));      //»ñµÃµ±Ç°µç½Ç¶ÈÕıÏÒÖµ£¨»¡¶È£©iq
-	pFOC->eAngleCosine = _IQ19toIQ(_IQ19cos(pFOC->eRadian));      //»ñµÃµ±Ç°µç½Ç¶ÈÓàÏÒÖµ£¨»¡¶È£©iq
+	pFOC->mAngle  = mangle;                                       //è·å¾—å½“å‰æœºæ¢°è§’åº¦iq19
+	pFOC->eAngle  = eAngleBuf;                                    //è·å¾—å½“å‰ç”µè§’åº¦iq19
+	pFOC->eRadian = _IQ19mpy(pFOC->eAngle , FOC_EANGLE_TO_ERADIN);//è·å¾—å½“å‰ç”µè§’åº¦ï¼ˆå¼§åº¦ï¼‰iq19
+	pFOC->eAngleSine   = _IQ19toIQ(_IQ19sin(pFOC->eRadian));      //è·å¾—å½“å‰ç”µè§’åº¦æ­£å¼¦å€¼ï¼ˆå¼§åº¦ï¼‰iq
+	pFOC->eAngleCosine = _IQ19toIQ(_IQ19cos(pFOC->eRadian));      //è·å¾—å½“å‰ç”µè§’åº¦ä½™å¼¦å€¼ï¼ˆå¼§åº¦ï¼‰iq
 }
 /*************************************************************
 ** Function name:       GetMotor1_mAngle
-** Descriptions:        »ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶ÈÖµ
+** Descriptions:        è·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦å€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -103,7 +101,7 @@ float GetMotor1FOC_mAngle(void)
 }
 /*************************************************************
 ** Function name:       GetMotor1_mAngle
-** Descriptions:        »ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶ÈÖµ
+** Descriptions:        è·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦å€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -118,7 +116,7 @@ float GetMotor1_mAngle(void)
 }
 /*************************************************************
 ** Function name:       GetMotor1_preSpeed
-** Descriptions:        »ñÈ¡µç»úµ±Ç°»úĞµ½Ç¶ÈÖµ
+** Descriptions:        è·å–ç”µæœºå½“å‰æœºæ¢°è§’åº¦å€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -139,14 +137,14 @@ void GetMotor1_preSpeed(FOC_Struct *pFOC)
     if(preSpeed < _IQ19(-180.0))preSpeed = preSpeed + _IQ19(360.0);
     else if(preSpeed > _IQ19(180.0)) preSpeed = preSpeed - _IQ19(360.0);
 
-    pFOC->preSpeed = -preSpeed;  //½ÇËÙ¶È£¨½Ç¶È²îÖµ£©Öµ´æÈë½á¹¹ÌåÖ¸Õë
+    pFOC->preSpeed = -preSpeed;  //è§’é€Ÿåº¦ï¼ˆè§’åº¦å·®å€¼ï¼‰å€¼å­˜å…¥ç»“æ„ä½“æŒ‡é’ˆ
     
-    lastmAngle = mAngle;     //´æ´¢ÉÏ´Î»úĞµ½Ç¶È
-    LastpreSpeed = preSpeed; //´æ´¢ÉÏ´Î½ÇËÙ¶È£¨½Ç¶È²îÖµ£©
+    lastmAngle = mAngle;     //å­˜å‚¨ä¸Šæ¬¡æœºæ¢°è§’åº¦
+    LastpreSpeed = preSpeed; //å­˜å‚¨ä¸Šæ¬¡è§’é€Ÿåº¦ï¼ˆè§’åº¦å·®å€¼ï¼‰
 }
 /*************************************************************
 ** Function name:       GetMotor1_prePosition
-** Descriptions:        »ñÈ¡µç»úµ±Ç°Î»ÖÃ -180 0 180
+** Descriptions:        è·å–ç”µæœºå½“å‰ä½ç½® -180 0 180
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None

@@ -11,10 +11,10 @@
 #include "FocControl.h"
 
 
-#define FOC_SSQRT_3 _IQ(0.577350269)      //Èı·ÖÖ®¸ùºÅÈı
-#define FOC_SQRT_3 _IQ(1.732050808)       //¸ùºÅÈı
-#define SVPWM_SQRT3_2 _IQ(0.866025404)    //¶ş·ÖÖ®¸ùºÅÈı
-#define AD_TO_CURRENT _IQ19(0.001611328)  //µçÁ÷²ÉÑù±ÈÀıÏµÊı
+#define FOC_SSQRT_3 _IQ(0.577350269)      //ä¸‰åˆ†ä¹‹æ ¹å·ä¸‰
+#define FOC_SQRT_3 _IQ(1.732050808)       //æ ¹å·ä¸‰
+#define SVPWM_SQRT3_2 _IQ(0.866025404)    //äºŒåˆ†ä¹‹æ ¹å·ä¸‰
+#define AD_TO_CURRENT _IQ19(0.001611328)  //ç”µæµé‡‡æ ·æ¯”ä¾‹ç³»æ•°
 
 void ipark_calc(FOC_Struct *v);
 void park_calc(FOC_Struct *v);

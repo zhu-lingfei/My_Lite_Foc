@@ -6,7 +6,7 @@
 //float Ia,Ib,Ic; //Debug
 /*************************************************************
 ** Function name:       GetMotor1PreCurrent
-** Descriptions:        »ñÈ¡µç»ú1 3ÏàµçÁ÷Öµ
+** Descriptions:        èŽ·å–ç”µæœº1 3ç›¸ç”µæµå€¼
 ** Input parameters:    None
 ** Output parameters:   None
 ** Returned value:      None
@@ -29,8 +29,8 @@ void GetMotor1PreCurrent(_iq *ua,_iq *ub,_iq *uc)
 }
 /*************************************************************
 ** Function name:       CurrentReconstruction
-** Descriptions:        µçÁ÷ÖØ¹¹
-** Input parameters:    pFOC:½á¹¹ÌåÖ¸Õë
+** Descriptions:        ç”µæµé‡æž„
+** Input parameters:    pFOC:ç»“æž„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -66,9 +66,9 @@ void CurrentReconstruction(FOC_Struct *pFOC)
 }
 /*************************************************************
 ** Function name:      ipark_calc
-** Descriptions:       park·´±ä»»
+** Descriptions:       parkåå˜æ¢
 ** Input parameters:   none
-** Output parameters:  Ëã³öI_Alpha_SvpwmºÍI_Beta_Svpwm ¸øµ½SVPWM
+** Output parameters:  ç®—å‡ºI_Alpha_Svpwmå’ŒI_Beta_Svpwm ç»™åˆ°SVPWM
 ** Returned value:     none
 ** Created by:         none
 ** Created date:       none
@@ -81,7 +81,7 @@ void ipark_calc(FOC_Struct *pFOC)
 
 /*************************************************************
 ** Function name:      park_calc
-** Descriptions:       park±ä»»
+** Descriptions:       parkå˜æ¢
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none
@@ -96,7 +96,7 @@ void park_calc(FOC_Struct *pFOC)
 
 /*************************************************************
 ** Function name:      clarke_calc
-** Descriptions:       clarke±ä»»
+** Descriptions:       clarkeå˜æ¢
 ** Input parameters:   none
 ** Output parameters:  none
 ** Returned value:     none
@@ -111,23 +111,23 @@ void clarke_calc(FOC_Struct *pFOC)
 
 /*************************************************************
 ** Function name:       CurrentPIControlID
-** Descriptions:        DÖáµçÁ÷±Õ»·
-** Input parameters:    pFOC:½á¹¹ÌåÖ¸Õë
+** Descriptions:        Dè½´ç”µæµé—­çŽ¯
+** Input parameters:    pFOC:ç»“æž„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
 *************************************************************/
 void CurrentPIControlID(FOC_Struct *pFOC)
 {
-    //»ñÈ¡Êµ¼ÊÖµ
+    //èŽ·å–å®žé™…å€¼
     pFOC->idPID.pre = pFOC->Id ;
-    //»ñÈ¡Ä¿±êÖµ
+    //èŽ·å–ç›®æ ‡å€¼
     pFOC->idPID.tar = pFOC->tarid;
-    //¼ÆËãÆ«²î
+    //è®¡ç®—åå·®
     pFOC->idPID.bias = pFOC->idPID.tar - pFOC->idPID.pre;
-    //¼ÆËãPIDÊä³öÖµ
+    //è®¡ç®—PIDè¾“å‡ºå€¼
     pFOC->idPID.out += _IQmpy(pFOC->idPID.kp, (pFOC->idPID.bias - pFOC->idPID.lastBias)) + _IQmpy(pFOC->idPID.ki, pFOC->idPID.bias);
-    //±£´æÆ«²î
+    //ä¿å­˜åå·®
     pFOC->idPID.lastBias = pFOC->idPID.bias;
 
     if (pFOC->idPID.out > _IQabs(pFOC->idPID.outMax)) {
@@ -140,8 +140,8 @@ void CurrentPIControlID(FOC_Struct *pFOC)
 }
 /*************************************************************
 ** Function name:       CurrentPIControlIQ
-** Descriptions:        QÖáµçÁ÷±Õ»·
-** Input parameters:    pFOC:½á¹¹ÌåÖ¸Õë
+** Descriptions:        Qè½´ç”µæµé—­çŽ¯
+** Input parameters:    pFOC:ç»“æž„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -149,15 +149,15 @@ void CurrentPIControlID(FOC_Struct *pFOC)
 void CurrentPIControlIQ(FOC_Struct *pFOC)
 {
     
-    //»ñÈ¡Êµ¼ÊÖµ
+    //èŽ·å–å®žé™…å€¼
     pFOC->iqPID.pre = pFOC->Iq;
-    //»ñÈ¡Ä¿±êÖµ
+    //èŽ·å–ç›®æ ‡å€¼
     pFOC->iqPID.tar = pFOC->tariq;
-    //¼ÆËãÆ«²î
+    //è®¡ç®—åå·®
     pFOC->iqPID.bias = pFOC->iqPID.tar - pFOC->iqPID.pre;
-    //¼ÆËãPIDÊä³öÖµ
+    //è®¡ç®—PIDè¾“å‡ºå€¼
     pFOC->iqPID.out += _IQmpy(pFOC->iqPID.kp, (pFOC->iqPID.bias - pFOC->iqPID.lastBias)) + _IQmpy(pFOC->iqPID.ki, pFOC->iqPID.bias);
-    //±£´æÆ«²î
+    //ä¿å­˜åå·®
     pFOC->iqPID.lastBias = pFOC->iqPID.bias;
 
     if (pFOC->iqPID.out > _IQabs(pFOC->iqPID.outMax)) {
@@ -171,8 +171,8 @@ void CurrentPIControlIQ(FOC_Struct *pFOC)
 
 /*************************************************************
 ** Function name:       SpeedPIDControl
-** Descriptions:        ËÙ¶ÈPID¿ØÖÆ
-** Input parameters:    pFOC:½á¹¹ÌåÖ¸Õë
+** Descriptions:        é€Ÿåº¦PIDæŽ§åˆ¶
+** Input parameters:    pFOC:ç»“æž„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -180,7 +180,7 @@ void CurrentPIControlIQ(FOC_Struct *pFOC)
 //float PreSpeed,TarSpeed; //Debug
 void SpeedPIDControl(FOC_Struct *pFOC)
 {
-    GetMotor1_preSpeed(pFOC);   //»ñÈ¡µ±Ç°×ªËÙ
+    GetMotor1_preSpeed(pFOC);   //èŽ·å–å½“å‰è½¬é€Ÿ
     pFOC->sPID.tar = pFOC->tarSpeed;
     pFOC->sPID.pre = pFOC->preSpeed;
     pFOC->sPID.bias = pFOC->sPID.tar - pFOC->sPID.pre;
@@ -192,7 +192,7 @@ void SpeedPIDControl(FOC_Struct *pFOC)
 	} else if (pFOC->sPID.out < -_IQ19abs(pFOC->sPID.outMax)) {
 		pFOC->sPID.out = -_IQ19abs(pFOC->sPID.outMax);
 	}
-  if(pFOC->isEnable == 1)  Motor1SetTarIDIQ(_IQ(0),_IQ19toIQ(pFOC->sPID.out));  //ÉèÖÃId£¬Iq£¬¸øµ½µçÁ÷»·
+  if(pFOC->isEnable == 1)  Motor1SetTarIDIQ(_IQ(0),_IQ19toIQ(pFOC->sPID.out));  //è®¾ç½®Idï¼ŒIqï¼Œç»™åˆ°ç”µæµçŽ¯
   else Motor1SetTarIDIQ(_IQ(0),_IQ(0));
 	
 //		PreSpeed = _IQ19toF(pFOC->sPID.pre);  //Debug
@@ -200,8 +200,8 @@ void SpeedPIDControl(FOC_Struct *pFOC)
 }
 /*************************************************************
 ** Function name:       PositionPIDControl
-** Descriptions:        Î»ÖÃPID¿ØÖÆ
-** Input parameters:    pFOC:½á¹¹ÌåÖ¸Õë
+** Descriptions:        ä½ç½®PIDæŽ§åˆ¶
+** Input parameters:    pFOC:ç»“æž„ä½“æŒ‡é’ˆ
 ** Output parameters:   None
 ** Returned value:      None
 ** Remarks:             None
@@ -210,10 +210,10 @@ float PrePos,TarPos,mAngle; //Debug
 void PositionPIDControl(FOC_Struct *pFOC)
 {
 	  _iq19 pre;
-    pFOC->pPID.pre = GetMotor1_prePosition(pFOC);   //»ñÈ¡µ±Ç°Î»ÖÃ
-	  pFOC->pPID.tar = pFOC->tarPos;                  //»ñÈ¡Ä¿±êÎ»ÖÃ
+    pFOC->pPID.pre = GetMotor1_prePosition(pFOC);   //èŽ·å–å½“å‰ä½ç½®
+	  pFOC->pPID.tar = pFOC->tarPos;                  //èŽ·å–ç›®æ ‡ä½ç½®
 	  
-	  //Ðý×ª×ø±êÏµ
+	  //æ—‹è½¬åæ ‡ç³»
 	  pre = pFOC->pPID.pre - pFOC->pPID.tar;
 		if(pre > _IQ19(180)) pre -= _IQ19(360);
 		else if(pre < _IQ19(-180))  pre += _IQ19(360);
@@ -230,7 +230,7 @@ void PositionPIDControl(FOC_Struct *pFOC)
 		} else if (pFOC->pPID.out < -_IQ19abs(pFOC->pPID.outMax)) {
 			pFOC->pPID.out = -_IQ19abs(pFOC->pPID.outMax);
 		}
-		if(pFOC->isEnable == 1)  Motor1SpeedPIDSetTar(pFOC->pPID.out);  //ÉèÖÃÄ¿±êËÙ¶È£¬¸øµ½ËÙ¶È»·
+		if(pFOC->isEnable == 1)  Motor1SpeedPIDSetTar(pFOC->pPID.out);  //è®¾ç½®ç›®æ ‡é€Ÿåº¦ï¼Œç»™åˆ°é€Ÿåº¦çŽ¯
 		else Motor1SpeedPIDSetTar(_IQ19(0));
 
 //		PrePos = _IQ19toF(pFOC->pPID.pre);  //Debug

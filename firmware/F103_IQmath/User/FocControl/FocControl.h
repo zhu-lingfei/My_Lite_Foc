@@ -9,7 +9,7 @@
 #include "stdint.h"
 #include "IQmathLib.h"
 
-// ËÙ¶ÈÎ»ÖÃ»· PID½á¹¹Ìå
+// é€Ÿåº¦ä½ç½®ç¯ PIDç»“æ„ä½“
 struct PID_Struct
 {
     /* data */
@@ -25,7 +25,7 @@ struct PID_Struct
     _iq19 out;
     _iq19 outMax;
 };
-// µçÁ÷»· PI½á¹¹Ìå
+// ç”µæµç¯ PIç»“æ„ä½“
 struct PI_Struct
 {
     /* data */
@@ -41,39 +41,39 @@ struct PI_Struct
     _iq outMax;
 };
 
-// FOC½á¹¹Ìå´´½¨
+// FOCç»“æ„ä½“åˆ›å»º
 typedef struct
 {
-    uint8_t isEnable; //µç»úÊ¹ÄÜ±êÖ¾
-    _iq polePairs;    //¼«¶ÔÊı
+    uint8_t isEnable; //ç”µæœºä½¿èƒ½æ ‡å¿—
+    _iq polePairs;    //æå¯¹æ•°
 
-    _iq tariq;        //Ä¿±êqµçÁ÷
-    _iq tarid;        //Ä¿±êiµçÁ÷
-    _iq19 mAngle_Offect;//Æ«ÒÆ½Ç¶È
-	_iq19 mAngle;       //»úĞµ½Ç¶È
-    _iq19 eAngle;       //µç½Ç¶È
-    _iq eRadian;      //µç½Ç¶È»¡¶È
-    _iq eAngleSine;   //µç½Ç¶ÈÕıÏÒÖµ£¨·Ç»¡¶È£©
-    _iq eAngleCosine; //µç½Ç¶ÈÓàÏÒÖµ£¨·Ç»¡¶È£©
+    _iq tariq;        //ç›®æ ‡qç”µæµ
+    _iq tarid;        //ç›®æ ‡iç”µæµ
+    _iq19 mAngle_Offect;//åç§»è§’åº¦
+	_iq19 mAngle;       //æœºæ¢°è§’åº¦
+    _iq19 eAngle;       //ç”µè§’åº¦
+    _iq eRadian;      //ç”µè§’åº¦å¼§åº¦
+    _iq eAngleSine;   //ç”µè§’åº¦æ­£å¼¦å€¼ï¼ˆéå¼§åº¦ï¼‰
+    _iq eAngleCosine; //ç”µè§’åº¦ä½™å¼¦å€¼ï¼ˆéå¼§åº¦ï¼‰
 
-    uint8_t iNum;     //a µçÁ÷²ÉÑù¸öÊı
-    _iq ia;           //a ÏàÊµ¼ÊµçÁ÷
-    _iq ib;           //b ÏàÊµ¼ÊµçÁ÷
-	_iq ic;           //c ÏàÊµ¼ÊµçÁ÷
+    uint8_t iNum;     //a ç”µæµé‡‡æ ·ä¸ªæ•°
+    _iq ia;           //a ç›¸å®é™…ç”µæµ
+    _iq ib;           //b ç›¸å®é™…ç”µæµ
+	_iq ic;           //c ç›¸å®é™…ç”µæµ
 
-    _iq I_Alpha;      //clarke±ä»»ºó * 2/3ºó I_Alpha
-    _iq I_Beta;       //clarke±ä»»ºó * 2/3ºó I_Beta
+    _iq I_Alpha;      //clarkeå˜æ¢å * 2/3å I_Alpha
+    _iq I_Beta;       //clarkeå˜æ¢å * 2/3å I_Beta
 
-    _iq I_Alpha_Svpwm;//park·´±ä»»ºó I_Alpha_Svpwm
-    _iq I_Beta_Svpwm; //park·´±ä»»ºó I_Beta_Svpwm
+    _iq I_Alpha_Svpwm;//parkåå˜æ¢å I_Alpha_Svpwm
+    _iq I_Beta_Svpwm; //parkåå˜æ¢å I_Beta_Svpwm
     
-    _iq Iq;           //park±ä»»ºó Iq
-    _iq Id;           //park±ä»»ºó Id
+    _iq Iq;           //parkå˜æ¢å Iq
+    _iq Id;           //parkå˜æ¢å Id
     
-    _iq19 tarSpeed;     //Ä¿±ê×ªËÙ »úĞµ½Ç¶È
-    _iq19 preSpeed;     //µ±Ç°×ªËÙ »úĞµ½Ç¶È
-		_iq19 tarPos;       //Ä¿±êÎ»ÖÃ »úĞµ½Ç¶È
-		_iq19 prePos;       //µ±Ç°Î»ÖÃ »úĞµ½Ç¶È
+    _iq19 tarSpeed;     //ç›®æ ‡è½¬é€Ÿ æœºæ¢°è§’åº¦
+    _iq19 preSpeed;     //å½“å‰è½¬é€Ÿ æœºæ¢°è§’åº¦
+		_iq19 tarPos;       //ç›®æ ‡ä½ç½® æœºæ¢°è§’åº¦
+		_iq19 prePos;       //å½“å‰ä½ç½® æœºæ¢°è§’åº¦
     struct PI_Struct idPID;    //id pid
     struct PI_Struct iqPID;    //iq pid
     struct PID_Struct sPID;    //speed pid

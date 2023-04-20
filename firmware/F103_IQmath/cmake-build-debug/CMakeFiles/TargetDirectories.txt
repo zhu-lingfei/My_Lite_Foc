@@ -1,0 +1,3 @@
+D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/CMakeFiles/F103-FOC.elf.dir
+D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/CMakeFiles/rebuild_cache.dir

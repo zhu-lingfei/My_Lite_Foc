@@ -3,8 +3,6 @@
 #include "adc.h"
 
 #include "stdio.h"
-#include "SEGGER_RTT.h"
-#include "SEGGER_RTT_Conf.h"
 
 
 struct SMotor1ADC1_Struct
