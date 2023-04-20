@@ -139,7 +139,7 @@ void GetMotor1_preSpeed(FOC_Struct *pFOC)
     if(preSpeed < _IQ19(-180.0))preSpeed = preSpeed + _IQ19(360.0);
     else if(preSpeed > _IQ19(180.0)) preSpeed = preSpeed - _IQ19(360.0);
 
-    pFOC->preSpeed = preSpeed;  //角速度（角度差值）值存入结构体指针
+    pFOC->preSpeed = -preSpeed;  //角速度（角度差值）值存入结构体指针
     
     lastmAngle = mAngle;     //存储上次机械角度
     LastpreSpeed = preSpeed; //存储上次角速度（角度差值）

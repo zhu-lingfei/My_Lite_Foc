@@ -92,7 +92,7 @@ void FocPID_Init(void)
     FOC_Mod.sPID.lastBias  = _IQ19(0);  //上次偏差
     FOC_Mod.sPID.err       = _IQ19(0);  //累计偏差
     FOC_Mod.sPID.out       = _IQ19(0);  //PID输出
-    FOC_Mod.sPID.outMax    = _IQ19(2.6f);  //PID输出限幅
+    FOC_Mod.sPID.outMax    = _IQ19(6.6f);  //PID输出限幅
     //Position PID参数初始化
     FOC_Mod.pPID.kp        = _IQ19(0.2);  //比例
     FOC_Mod.pPID.ki        = _IQ19(0.0);  //积分
@@ -257,20 +257,33 @@ float Tar_Iq,Tar_Id;
 float Pre_Iq,Pre_Id;
 float Out_Iq,Out_Id;
 float Bias_Iq,Bias_Id;
+float Tar_speed,Pre_speed,Out_speed;
 void Motor1FOCConfig_Printf(void)
 {
-    Tar_Iq = _IQtoF(FOC_Mod.iqPID.tar);
-    Tar_Id = _IQtoF(FOC_Mod.idPID.tar);
-    Pre_Iq = _IQtoF(FOC_Mod.iqPID.pre);
-    Pre_Id = _IQtoF(FOC_Mod.idPID.pre);
-    Out_Iq = _IQtoF(FOC_Mod.iqPID.out);
-    Out_Id = _IQtoF(FOC_Mod.idPID.out);
-    Bias_Iq = _IQtoF(FOC_Mod.iqPID.bias);
-    Bias_Id = _IQtoF(FOC_Mod.idPID.bias);
+//Iq    
+//    Tar_Iq = _IQtoF(FOC_Mod.iqPID.tar);
+//    Pre_Iq = _IQtoF(FOC_Mod.iqPID.pre);
+//    Out_Iq = _IQtoF(FOC_Mod.iqPID.out);
+//    printf("%f,%f,%f\n", Tar_Iq, Pre_Iq, Out_Iq);
+
+//Id    
+    Tar_Id = _IQtoF(FOC_Mod.idPID.tar);    
+    Pre_Id = _IQtoF(FOC_Mod.idPID.pre);    
+    Out_Id = _IQtoF(FOC_Mod.idPID.out);  
+    printf("%f,%f,%f\n", Tar_Id, Pre_Id, Out_Id); 
+
+//speed    
+//    Tar_speed = _IQ19toF(FOC_Mod.sPID.tar);
+//    Pre_speed = _IQ19toF(FOC_Mod.sPID.pre);
+//    Out_speed = _IQ19toF(FOC_Mod.sPID.out);
+//    printf("%f,%f,%f\n", Tar_speed, Pre_speed, Out_speed);  
     
+//    Bias_Iq = _IQtoF(FOC_Mod.iqPID.bias);
+//    Bias_Id = _IQtoF(FOC_Mod.idPID.bias);
+ 
 //   printf("1:%f\r\n",_IQ19toF(FOC_Mod.preSpeed)); 
 //    printf("2:%f\r\n",_IQ19toF(FOC_Mod.mAngle));   
-    printf("%f,%f,%f,%f\n", Tar_Id, Pre_Id,Out_Id,Bias_Id);
+
     //printf("2:%f\r\n",Pre_Iq);
     
 //    printf("1:%f\r\n",_IQ19toF(FOC_Mod.sPID.tar));
