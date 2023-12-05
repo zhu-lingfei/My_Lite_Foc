@@ -922,7 +922,7 @@ F103-FOC.elf: CMakeFiles/F103-FOC.elf.dir/User/PeripheralsDriver/SDS.c.obj
 F103-FOC.elf: CMakeFiles/F103-FOC.elf.dir/User/PeripheralsDriver/SysManage.c.obj
 F103-FOC.elf: CMakeFiles/F103-FOC.elf.dir/User/PeripheralsDriver/TouchDriver.c.obj
 F103-FOC.elf: CMakeFiles/F103-FOC.elf.dir/build.make
-F103-FOC.elf: D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/User/IQmath/rvmdk-cm3/IQmathLib-cm3.lib
+F103-FOC.elf: D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/User/IQmath/gcc-cm3/IQmathLib-cm3.a
 F103-FOC.elf: CMakeFiles/F103-FOC.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\File\Robot_Project\FOC\My_Lite_Foc\firmware\F103_IQmath\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Linking C executable F103-FOC.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\F103-FOC.elf.dir\link.txt --verbose=$(VERBOSE)

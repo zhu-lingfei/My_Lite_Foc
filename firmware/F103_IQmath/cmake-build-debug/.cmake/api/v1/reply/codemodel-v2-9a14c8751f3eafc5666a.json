@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.24"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "F103-FOC.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-F103-FOC.elf-Debug-ffbe464c1a332de129af.json",
+					"jsonFile" : "target-F103-FOC.elf-08d5fb596ef60d44de82.json",
 					"name" : "F103-FOC.elf",
 					"projectIndex" : 0
 				}

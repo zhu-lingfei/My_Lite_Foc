@@ -115,11 +115,11 @@ void PerDriverMain_Loop(void)
 	//速度环调试
 	 RUN_BY_LIMIT_BLOCK(8000,
 	 	if (currentflag == 0) {
-	 		Motor1SpeedPIDSetTar(_IQ19(2.0));  //0.4-67/min
+	 		Motor1SpeedPIDSetTar(_IQ19(1.0));  //0.4-67/min
 			
 	 		currentflag = 1;
 	 	} else {
-	 		Motor1SpeedPIDSetTar(_IQ19(-2.0));
+	 		Motor1SpeedPIDSetTar(_IQ19(-1.0));
 	 		currentflag = 0;
 	 	}
 	 )

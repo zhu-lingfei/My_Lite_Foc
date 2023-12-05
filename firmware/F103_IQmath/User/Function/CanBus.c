@@ -1,6 +1,7 @@
 #include "CanBus.h"
 #include "main.h"
 #include "stdio.h"
+#include "FocControl.h"
 
 
 CANTxMsg_t TxMsg;  //定义发送邮件实体
@@ -102,16 +103,23 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan);
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
 	//这句话是判断对方发来的信息是发给本板子的can1还是can2，如果是can1，那通过接线就知道是哪个设备发来的数据。
+        extern uint8_t flag;
 		if(hcan->Instance==CAN1)
 		{
 			/*
 				这个是获取邮件的函数，既然进了接收中断，那么就说明接收到了数据因此我们调用下方函数获取。
 				我们提供一个RxMessage以及payload分别接收邮件邮件信息（id号，邮件类型等等）和数据内容。
 			*/
-				if(HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,&(RxMsg.RxMessage),(RxMsg.payload))==HAL_OK)
-						rcvdFlag=1;
-				else
-						Error_Handler();
+            if(HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,&(RxMsg.RxMessage),(RxMsg.payload))==HAL_OK)
+            {
+                rcvdFlag=1;
+                uint8_t id = (RxMsg.RxMessage.StdId >> 7); // 4Bits ID & 7Bits Msg
+                uint8_t cmd = RxMsg.RxMessage.StdId & 0x7F; // 4Bits ID & 7Bits Msg
+                DoCanCmd(cmd, RxMsg.payload, RxMsg.RxMessage.DLC);
+                //flag = RxMsg.payload[0];
+            }
+            else
+                Error_Handler();
 		}
 		//HAL_CAN_ActivateNotification(&hcan1,CAN_IT_RX_FIFO0_MSG_PENDING);
 }
@@ -147,7 +155,7 @@ void CanBus_Loop(void)
 {
 	uint8_t i;
 	uint8_t U8_Angle[8]={0};   //接收目标角度
-  uint8_t SendMsg[8] ={0};   //can发送的内容
+    uint8_t SendMsg[8] ={0};   //can发送的内容
 	if(rcvdFlag ==1)
 	{
 		rcvdFlag = 0;
@@ -164,4 +172,26 @@ void CanBus_Loop(void)
 		
 		CAN1_Send_Msg(&TxMsg,0x12,SendMsg);//can发送当前角度
 	}
+}
+
+
+void DoCanCmd(uint8_t _cmd, uint8_t* _data, uint32_t _len)
+{
+    switch (_cmd)
+    {
+        // 0x00~0x0F No Memory CMDs
+        case 0x01:  // Enable Motor
+            FocMotor_Enable(1);
+            break;
+        case 0x02:  // Disable Motor
+            FocMotor_Enable(0);
+            break;
+        case 0x03:  //Set tarspeed
+            Motor1SpeedPIDSetTar(_IQ19(_data[0]));
+            break;
+
+        default:
+            break;
+    }
+
 }

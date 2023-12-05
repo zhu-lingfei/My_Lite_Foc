@@ -11,10 +11,10 @@
 				<Option working_dir="D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="F103-FOC.elf">
@@ -47,10 +47,10 @@
 					<Add directory="d:\tools\embed_env\gcc-arm-none-eabi-7-2018-q2-update-win32\bin\../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 F103-FOC.elf"/>
-					<CompileFile command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 F103-FOC.elf"/>
+					<CompileFile command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="F103-FOC.elf/fast">
@@ -83,30 +83,30 @@
 					<Add directory="d:\tools\embed_env\gcc-arm-none-eabi-7-2018-q2-update-win32\bin\../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 F103-FOC.elf/fast"/>
-					<CompileFile command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 F103-FOC.elf/fast"/>
+					<CompileFile command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe -f &quot;D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>

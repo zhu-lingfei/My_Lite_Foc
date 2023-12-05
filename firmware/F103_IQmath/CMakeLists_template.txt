@@ -61,7 +61,7 @@ add_link_options(-mcpu=${mcpu} -mthumb -mthumb-interwork)
 add_link_options(-T $${LINKER_SCRIPT})
 
 add_library(LibIQmath STATIC IMPORTED)
-set_target_properties(LibIQmath PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/User/IQmath/rvmdk-cm3/IQmathLib-cm3.lib)
+set_target_properties(LibIQmath PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/User/IQmath/gcc-cm3/IQmathLib-cm3.a)
 add_executable($${PROJECT_NAME}.elf $${SOURCES} $${LINKER_SCRIPT})
 target_link_libraries(${PROJECT_NAME}.elf PRIVATE LibIQmath)
 

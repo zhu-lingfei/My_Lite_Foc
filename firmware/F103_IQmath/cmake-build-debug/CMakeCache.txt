@@ -42,7 +42,7 @@ CMAKE_ASM_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Debug
+CMAKE_BUILD_TYPE:STRING=
 
 //Id string of the compiler for the CodeBlocks IDE. Automatically
 // detected when left empty
@@ -137,8 +137,8 @@ CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/F103-FOC
 //Path to a program.
 CMAKE_LINKER:FILEPATH=D:/Tools/Embed_Env/gcc-arm-none-eabi-7-2018-q2-update-win32/bin/arm-none-eabi-ld.exe
 
-//No help, variable specified on the command line.
-CMAKE_MAKE_PROGRAM:UNINITIALIZED=D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe
+//Path to a program.
+CMAKE_MAKE_PROGRAM:FILEPATH=D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -378,6 +378,8 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HOME_DIRECTORY:INTERNAL=D:/File/Robot_Project/FOC/My_Lite_Foc/firmware/F103_IQmath
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
+CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG

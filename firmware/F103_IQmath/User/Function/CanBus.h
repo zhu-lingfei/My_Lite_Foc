@@ -27,5 +27,5 @@ extern CANRxMsg_t RxMsg;
 
 void CanBus_Init(void);
 void CanBus_Loop(void);
-
+void DoCanCmd(uint8_t _cmd, uint8_t* _data, uint32_t _len);
 #endif // __CanBus_h__

@@ -151,7 +151,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Debug"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -814,12 +814,16 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Path to a program."
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : "D:/Tools/Embed_Env/mingw64/bin/mingw32-make.exe"
+			"type" : "FILEPATH",
+			"value" : "D:/Tools/Clion_Env/mingw64/bin/mingw32-make.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",

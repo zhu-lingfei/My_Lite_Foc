@@ -100,7 +100,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-fdiagnostics-color=always"
 				},
 				{
 					"backtrace" : 6,
@@ -274,9 +274,6 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
-				},
-				{
 					"backtrace" : 6,
 					"fragment" : "-mcpu=cortex-m3"
 				},
@@ -400,10 +397,6 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
-			{
 				"fragment" : "",
 				"role" : "flags"
 			},
@@ -439,7 +432,7 @@
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "D:\\File\\Robot_Project\\FOC\\My_Lite_Foc\\firmware\\F103_IQmath\\User\\IQmath\\rvmdk-cm3\\IQmathLib-cm3.lib",
+				"fragment" : "D:\\File\\Robot_Project\\FOC\\My_Lite_Foc\\firmware\\F103_IQmath\\User\\IQmath\\gcc-cm3\\IQmathLib-cm3.a",
 				"role" : "libraries"
 			}
 		],
