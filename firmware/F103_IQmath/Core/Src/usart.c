@@ -21,10 +21,10 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-//¼ÓÈëÒÔÏÂ´úÂë,Ö§³Öprintfº¯Êý,¶ø²»ÐèÒªÑ¡Ôñuse MicroLIB	  
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½,Ö§ï¿½ï¿½printfï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÑ¡ï¿½ï¿½use MicroLIB	  
 #if 1
 #pragma import(__use_no_semihosting)             
-//±ê×¼¿âÐèÒªµÄÖ§³Öº¯Êý                 
+//ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö§ï¿½Öºï¿½ï¿½ï¿½                 
 struct __FILE 
 { 
 	int handle; 
@@ -32,15 +32,15 @@ struct __FILE
 }; 
 
 FILE __stdout;       
-//¶¨Òå_sys_exit()ÒÔ±ÜÃâÊ¹ÓÃ°ëÖ÷»úÄ£Ê½    
+//ï¿½ï¿½ï¿½ï¿½_sys_exit()ï¿½Ô±ï¿½ï¿½ï¿½Ê¹ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½    
 void _sys_exit(int x) 
 { 
 	x = x; 
 } 
-//ÖØ¶¨Òåfputcº¯Êý 
+//ï¿½Ø¶ï¿½ï¿½ï¿½fputcï¿½ï¿½ï¿½ï¿½ 
 int fputc(int ch, FILE *f)
 {      
-	while((USART3->SR&0X40)==0);//Ñ­»··¢ËÍ,Ö±µ½·¢ËÍÍê±Ï   
+	while((USART3->SR&0X40)==0);//Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   
     USART3->DR = (uint8_t) ch;      
 	return ch;
 }
@@ -80,7 +80,7 @@ void MX_USART3_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART3_Init 2 */
-  __HAL_UART_ENABLE_IT(&huart3,UART_IT_IDLE);  //¿ªÆô´®¿Ú¿ÕÏÐÖÐ¶Ï
+  __HAL_UART_ENABLE_IT(&huart3,UART_IT_IDLE);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
   /* USER CODE END USART3_Init 2 */
 
 }
@@ -149,7 +149,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     HAL_NVIC_SetPriority(USART3_IRQn, 1, 1);
     HAL_NVIC_EnableIRQ(USART3_IRQn);
   /* USER CODE BEGIN USART3_MspInit 1 */
-	HAL_UART_Receive_DMA(&huart3,RxBuffer,1024);   //¿ªÊ¼DMA½ÓÊÕ
+	HAL_UART_Receive_DMA(&huart3,RxBuffer,1024);   //ï¿½ï¿½Ê¼DMAï¿½ï¿½ï¿½ï¿½
 
   /* USER CODE END USART3_MspInit 1 */
   }

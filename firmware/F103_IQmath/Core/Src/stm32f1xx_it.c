@@ -194,7 +194,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-  MS_TIMEBASE();  //1msÊ±»ù
+  MS_TIMEBASE();  //1msÊ±ï¿½ï¿½
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
@@ -217,8 +217,8 @@ void DMA1_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
     
-	  Motor1ADC1ValueStorage();//´æ´¢ADC²ÉÑùÖµ
-    FocControl_Loop();       //¿ªÊ¼Ò»´ÎFOCÔËËã
+	  Motor1ADC1ValueStorage();//ï¿½æ´¢ADCï¿½ï¿½ï¿½ï¿½Öµ
+    FocControl_Loop();       //ï¿½ï¿½Ê¼Ò»ï¿½ï¿½FOCï¿½ï¿½ï¿½ï¿½
 
   /* USER CODE END DMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_adc1);
@@ -298,14 +298,14 @@ void TIM1_UP_IRQHandler(void)
         else 
         {
           Tick = 0;
-          Motor1ADC1StartOnce();//FOC´¥·¢ADC²ÉÑù
+          Motor1ADC1StartOnce();//FOCï¿½ï¿½ï¿½ï¿½ADCï¿½ï¿½ï¿½ï¿½
         }
         if(Tick2 < 19)Tick2++;//19:1000us
         else
         {
             Tick2 = 0;
-            //FocPosControl_Loop();  //FOCÎ»ÖÃ±Õ»·Ë¢ÐÂ
-            FocSpeedControl_Loop();//FOCËÙ¶È±Õ»·Ë¢ÐÂ
+            //FocPosControl_Loop();  //FOCÎ»ï¿½Ã±Õ»ï¿½Ë¢ï¿½ï¿½
+            FocSpeedControl_Loop();//FOCï¿½Ù¶È±Õ»ï¿½Ë¢ï¿½ï¿½
         }
     }
 
@@ -317,6 +317,20 @@ void TIM1_UP_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles TIM1 trigger and commutation interrupts.
+  */
+void TIM1_TRG_COM_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM1_TRG_COM_IRQn 0 */
+
+  /* USER CODE END TIM1_TRG_COM_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim1);
+  /* USER CODE BEGIN TIM1_TRG_COM_IRQn 1 */
+
+  /* USER CODE END TIM1_TRG_COM_IRQn 1 */
+}
+
+/**
   * @brief This function handles USART3 global interrupt.
   */
 void USART3_IRQHandler(void)
@@ -324,14 +338,14 @@ void USART3_IRQHandler(void)
   /* USER CODE BEGIN USART3_IRQn 0 */
     if(__HAL_UART_GET_FLAG(&huart3,UART_FLAG_IDLE) == SET)
     {
-        __HAL_UART_CLEAR_IDLEFLAG(&huart3); //Çå³ý¿ÕÏÐÖÐ¶Ï±êÖ¾
-        HAL_UART_DMAStop(&huart3);          //¹Ø±ÕDMA´®¿Ú
-        RxLen = MaxDataBufSize - __HAL_DMA_GET_COUNTER(&hdma_usart3_rx); //»ñÈ¡±¾´Î½ÓÊÕÊý¾Ý³¤¶È
-        UartBus.DMA_ReceiveLength = RxLen;  //Êý¾Ý³¤¶È´æÈë½á¹¹Ìå
-        UartBus.FrameReceiveFalg = 1;       //´®¿ÚÖ¡½ÓÊÕÍê³É±êÖ¾Î»ÖÃ¸ß
-        memcpy(UartBus.UartRxDataBuf,RxBuffer,UartBus.DMA_ReceiveLength);//DMAÖ¡Êý¾Ý×ª´æÖÁ½á¹¹Ìå»º´æ
-        memset(RxBuffer,0,MaxDataBufSize);                               //DMA½ÓÊÕ»º´æÇåÁã
-        HAL_UART_Receive_DMA(&huart3,RxBuffer,MaxDataBufSize);           //¿ªÊ¼ÐÂÒ»ÂÖDMA½ÓÊÕ
+        __HAL_UART_CLEAR_IDLEFLAG(&huart3); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï±ï¿½Ö¾
+        HAL_UART_DMAStop(&huart3);          //ï¿½Ø±ï¿½DMAï¿½ï¿½ï¿½ï¿½
+        RxLen = MaxDataBufSize - __HAL_DMA_GET_COUNTER(&hdma_usart3_rx); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
+        UartBus.DMA_ReceiveLength = RxLen;  //ï¿½ï¿½ï¿½Ý³ï¿½ï¿½È´ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½
+        UartBus.FrameReceiveFalg = 1;       //ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½Ö¾Î»ï¿½Ã¸ï¿½
+        memcpy(UartBus.UartRxDataBuf,RxBuffer,UartBus.DMA_ReceiveLength);//DMAÖ¡ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½å»ºï¿½ï¿½
+        memset(RxBuffer,0,MaxDataBufSize);                               //DMAï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        HAL_UART_Receive_DMA(&huart3,RxBuffer,MaxDataBufSize);           //ï¿½ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½DMAï¿½ï¿½ï¿½ï¿½
     }
 
   /* USER CODE END USART3_IRQn 0 */
