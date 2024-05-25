@@ -39,6 +39,6 @@ extern Svpwm_Struct SVPWM_Mod;
 
 void SvpwmCtrl(_iq uAlpha,_iq uBeta);
 uint8_t GetSVPWMSector(void);
-
+void Svpwm_Udc_update(_iq _udc, _iq k);
 #endif // __SVPWM_h__
 

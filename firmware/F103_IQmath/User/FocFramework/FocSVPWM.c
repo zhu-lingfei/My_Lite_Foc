@@ -218,6 +218,12 @@ uint8_t GetSVPWMSector(void)
     return SVPWM_Mod.sector;
 }
 
+void Svpwm_Udc_update(_iq _udc, _iq _k)
+{
+    SVPWM_Mod.udc = _udc;
+    SVPWM_Mod.K = _k;
+
+}
 
 
 

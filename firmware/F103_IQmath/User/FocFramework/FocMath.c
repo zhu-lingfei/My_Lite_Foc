@@ -209,33 +209,33 @@ void SpeedPIDControl(FOC_Struct *pFOC)
 float PrePos,TarPos,mAngle; //Debug
 void PositionPIDControl(FOC_Struct *pFOC)
 {
-	  _iq19 pre;
+    _iq19 pre;
     pFOC->pPID.pre = GetMotor1_prePosition(pFOC);   //获取当前位置
-	  pFOC->pPID.tar = pFOC->tarPos;                  //获取目标位置
+    pFOC->pPID.tar = pFOC->tarPos;                  //获取目标位置
 	  
-	  //旋转坐标系
-	  pre = pFOC->pPID.pre - pFOC->pPID.tar;
-		if(pre > _IQ19(180)) pre -= _IQ19(360);
-		else if(pre < _IQ19(-180))  pre += _IQ19(360);
+    //旋转坐标系
+	pre = pFOC->pPID.pre - pFOC->pPID.tar;
+    if(pre > _IQ19(180)) pre -= _IQ19(360);
+    else if(pre < _IQ19(-180))  pre += _IQ19(360);
 
     
     //pFOC->pPID.bias = pFOC->pPID.tar - pFOC->pPID.pre;
-	  pFOC->pPID.bias = _IQ19(0) - pre;
+    pFOC->pPID.bias = _IQ19(0) - pre;
     pFOC->pPID.out  = _IQ19mpy(pFOC->pPID.kp , pFOC->pPID.bias) + _IQ19mpy(pFOC->pPID.kd,(pFOC->pPID.bias - pFOC->pPID.lastBias)) +  _IQ19mpy(pFOC->pPID.ki , pFOC->pPID.err);
     pFOC->pPID.lastBias = pFOC->pPID.bias;
-	  pFOC->pPID.err  += pFOC->pPID.bias;
+    pFOC->pPID.err  += pFOC->pPID.bias;
 
-		if (pFOC->pPID.out > _IQ19abs(pFOC->pPID.outMax)) {
-			pFOC->pPID.out = _IQ19abs(pFOC->pPID.outMax);
-		} else if (pFOC->pPID.out < -_IQ19abs(pFOC->pPID.outMax)) {
-			pFOC->pPID.out = -_IQ19abs(pFOC->pPID.outMax);
-		}
-		if(pFOC->isEnable == 1)  Motor1SpeedPIDSetTar(pFOC->pPID.out);  //设置目标速度，给到速度环
-		else Motor1SpeedPIDSetTar(_IQ19(0));
+    if (pFOC->pPID.out > _IQ19abs(pFOC->pPID.outMax)) {
+        pFOC->pPID.out = _IQ19abs(pFOC->pPID.outMax);
+    } else if (pFOC->pPID.out < -_IQ19abs(pFOC->pPID.outMax)) {
+        pFOC->pPID.out = -_IQ19abs(pFOC->pPID.outMax);
+    }
+    if(pFOC->isEnable == 1)  Motor1SpeedPIDSetTar(pFOC->pPID.out);  //设置目标速度，给到速度环
+    else Motor1SpeedPIDSetTar(_IQ19(0));
 
-//		PrePos = _IQ19toF(pFOC->pPID.pre);  //Debug
-//		TarPos = _IQ19toF(pFOC->pPID.tar);  //Debug
-//		mAngle = _IQ19toF(pFOC->mAngle);
+//    PrePos = _IQ19toF(pFOC->pPID.pre);  //Debug
+//    TarPos = _IQ19toF(pFOC->pPID.tar);  //Debug
+//    mAngle = _IQ19toF(pFOC->mAngle);
 }
 
 

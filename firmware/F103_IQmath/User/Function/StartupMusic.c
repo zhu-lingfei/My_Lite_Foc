@@ -30,8 +30,8 @@ void StartupMusic_Loop(void)
 //	else if(TickTime <1400)SetMotor1Channel_FreqDuty(2600);
 	else 
 	{
-		FocMotor_Enable(0);
-	  SetMotor1Channel_FreqDuty(20000,0);
+        FocMotor_Enable(0);
+        SetMotor1Channel_FreqDuty(20000,0);
 	}
 }
 

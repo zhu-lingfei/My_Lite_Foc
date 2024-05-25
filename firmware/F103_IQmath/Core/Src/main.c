@@ -96,6 +96,7 @@ int main(void)
   MX_TIM1_Init();
   MX_USART3_UART_Init();
   MX_CAN_Init();
+  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
   APPMain_Init();
   /* USER CODE END 2 */

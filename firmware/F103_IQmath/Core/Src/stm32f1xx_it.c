@@ -28,6 +28,7 @@
 #include "usart.h"
 #include "UartBus.h"
 #include "string.h"
+#include "adc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,7 +69,8 @@ extern DMA_HandleTypeDef hdma_usart3_rx;
 extern DMA_HandleTypeDef hdma_usart3_tx;
 extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
-
+extern ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc2;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -217,8 +219,8 @@ void DMA1_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
     
-	  Motor1ADC1ValueStorage();//�洢ADC����ֵ
-    FocControl_Loop();       //��ʼһ��FOC����
+    Motor1ADC1ValueStorage();
+    FocControl_Loop();
 
   /* USER CODE END DMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_adc1);
@@ -290,23 +292,14 @@ void TIM1_UP_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_IRQn 0 */
     static unsigned char Tick = 0;
-    static unsigned char Tick2 = 0;
-    
-    if (__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim1))//50us 20k Hz
-   {
-		if(Tick <1)Tick ++;//1:100us
-        else 
-        {
-          Tick = 0;
-          Motor1ADC1StartOnce();//FOC����ADC����
-        }
-        if(Tick2 < 19)Tick2++;//19:1000us
-        else
-        {
-            Tick2 = 0;
-            //FocPosControl_Loop();  //FOCλ�ñջ�ˢ��
-            FocSpeedControl_Loop();//FOC�ٶȱջ�ˢ��
-        }
+    Motor_Phase_ADCStartOnce();//开启注入组转换
+    Motor1ADC1StartOnce();     //采样母线电压
+    if(Tick < 9)Tick++;        //速度环，频率为电流环十分之一
+    else
+    {
+        Tick = 0;
+        //FocPosControl_Loop();
+        FocSpeedControl_Loop();
     }
 
   /* USER CODE END TIM1_UP_IRQn 0 */

@@ -14,6 +14,8 @@
 
 void Motor1ADC1StartOnce(void);
 void Motor1ADC1ValueStorage(void);
+void Motor_Phase_ADCValueStorage(uint16_t U, uint16_t V);
+void Motor_Bus_ADCValueStorage(void);
 _iq19 GetMotor1ADC1PhaseXValue(uint8_t Phase);
 
 #endif //__Motor1ADC1_H__

@@ -117,8 +117,8 @@ void FocControl_Init(void)
 {
     FocPID_Init();                        //FOC所有PID参数初始化
     FocMotor_Enable(0);                   //FOC使能初始化  失能
-	  Motor1PosPIDSetTar(_IQ19(80));         //目标位置初始化0
-	  Motor1SpeedPIDSetTar(_IQ19(0));       //目标速度初始化0
+    Motor1PosPIDSetTar(_IQ19(80));         //目标位置初始化0
+    Motor1SpeedPIDSetTar(_IQ19(0));       //目标速度初始化0
     Motor1SetTarIDIQ(_IQ(0.0),_IQ(0.0));  //目标电流初始化0
 }
 
@@ -134,7 +134,7 @@ void FocControl_Init(void)
 void FocMotor_Enable(uint8_t able)
 {
 	 Motor1SetEnable(able);   //电机驱动使能
-	  FOC_Mod.isEnable = 1;    //FOC运算使能
+     FOC_Mod.isEnable = 1;    //FOC运算使能
 }
 
 /*************************************************************

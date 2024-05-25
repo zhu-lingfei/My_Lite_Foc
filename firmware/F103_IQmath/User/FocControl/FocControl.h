@@ -72,12 +72,12 @@ typedef struct
     
     _iq19 tarSpeed;     //目标转速 机械角度
     _iq19 preSpeed;     //当前转速 机械角度
-		_iq19 tarPos;       //目标位置 机械角度
-		_iq19 prePos;       //当前位置 机械角度
+    _iq19 tarPos;       //目标位置 机械角度
+    _iq19 prePos;       //当前位置 机械角度
     struct PI_Struct idPID;    //id pid
     struct PI_Struct iqPID;    //iq pid
     struct PID_Struct sPID;    //speed pid
-		struct PID_Struct pPID;    //position pid
+    struct PID_Struct pPID;    //position pid
  
 }FOC_Struct;
 
