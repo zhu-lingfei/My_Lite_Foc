@@ -1,1 +1,43 @@
-First  commit
+# 基于DRV8313的FOC驱动器
+
+## 描述
+
+本驱动板适用于4008/4010云台无刷电机，使用不高于16V电压。主控采用STM32F103C8T6,驱动芯片为DRV8313/AT8313，最大电流2.5A，使用低侧电流采样，驱动板集成CAN收发器，使用CAN通讯控制。
+
+<div align="center">
+    <img src="//image.lceda.cn/pullimage/kYhobECYWXCBPvObRmiUCSfAzA0Fou7flxt1IOUp.png" alt="图片1" width="400">
+</div>
+
+项目参考自[B站UP主：会飞的车_S](https://www.bilibili.com/video/BV1nv4y1G73a/?spm_id_from=333.999.0.0&amp;vd_source=1aaa4eb0748d3bced4e39449a442883b)的开源项目，在硬件上做出如下修改：
+
+1. 修改原本的母线电流采样为低侧电流采样，母线电流采样对运放要求较高，需要使用比常规放大器更好的PWM抑制功能的高精度双向运放，原设计采用INA240,价格比较高；低侧采样则对运放没什么要求，这里使用INA181。
+   
+   <div align="center">
+    <img src="//image.lceda.cn/pullimage/8qZ7gRDjPvOCVdDjstDch9Ssic9Tng0mNsiOVpxp.png" alt="图片1" width="600">
+   </div>
+   <div align="center">
+    <img src="//image.lceda.cn/pullimage/alk5VVlNpyq13T1Cnfyi6zQpBF7pRmjNeJqE4s01.png" alt="图片1" width="350">
+    <img src="//image.lceda.cn/pullimage/U2r0M3YL4TQYCOLch1tMOU9YkSIblDAgLW1NE0Dp.png" alt="图片2" width="350">
+   </div>
+
+2. 运放参考电压使用电阻分压加电压跟随器，降低阻抗。参考电压为1.65v，满足双向电流采样的电压偏置。可使用OPA333或OPA348，OPA348价格比较低。
+   
+   <div align="center">
+    <img src="//image.lceda.cn/pullimage/AN3F4ICNDjBBXYnj3WryJpjAYlhZJBOkEHClkJli.png" alt="图片1" width="600">
+   </div>
+
+由于原本是画在一块方板子上的，后来改了圆板子，很多布局是直接复制过来的，也懒得修改了，看起来有些奇怪，但是能跑就行。
+运放可以只焊接两个，即U相和V相，W相（红框内）可不焊接。
+
+<div align="center">
+    <img src="//image.lceda.cn/pullimage/FKBAC06iYA72PBfgCMETvLcoQNlBLlnynhO2Xvcj.png" alt="图片1" width="400">
+</div>
+
+## 程序
+
+固件修改自[B站UP主：会飞的车_S](https://space.bilibili.com/342241148?spm_id_from=333.788.0.0)及群主：小时候可吊了。修改的内容如下：
+
+1. 将原本定时器更新中断中使用软件触发电流采样修改为定时器通道4输出OC4REF触发AD采样，使用ADC1和ADC2注入组分别采集U相和V相的电流，使用规则组采集电源电压。
+2. 添加CAN控制指令
+3. 添加FreeRtos
+   [GIT仓库地址](https://github.com/zhu-lingfei/My_Lite_Foc)（还未提交最终版本，修改ing）
