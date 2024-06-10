@@ -1,0 +1,6 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "aon7544")(type "KiCad")(uri "${KIPRJMOD}/lib")(options "")(descr ""))
+  (lib (name "FD6288")(type "KiCad")(uri "${KIPRJMOD}/lib/FD6288Q")(options "")(descr ""))
+  (lib (name "lmv324")(type "KiCad")(uri "${KIPRJMOD}/lib/LMV324IPWR")(options "")(descr ""))
+)
