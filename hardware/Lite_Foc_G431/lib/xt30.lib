@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# XT30PW-M
+#
+DEF XT30PW-M CN 0 40 Y Y 1 F N
+F0 "CN" 0 361 50 H V C CNN
+F1 "XT30PW-M" 0 561 50 H V C CNN
+F2 "kicad_lceda:CONN-TH_XT30PW-M" 0 161 50 H I C CNN
+F3 "http://www.szlcsc.com/product/details_426930.html" 0 -39 50 H I C CNN
+F4 "C431092" 0 -239 50 H I C CNN "SuppliersPartNumber"
+F5 "std:a5840929b24f4c1eb727ea4219c56c07" 0 -239 50 H I C CNN "uuid"
+DRAW
+S -100 150 200 -150 1 1 6 N
+C -50 100 15 1 1 6 F
+X 1 1 -200 50 100 R 50 50 1 1 I 
+X 2 2 -200 -50 100 R 50 50 1 1 I 
+X 3 3 150 -250 100 U 50 50 1 1 I 
+X 4 4 150 250 100 D 50 50 1 1 I 
+ENDDRAW
+ENDDEF
+
+#
+#End Library

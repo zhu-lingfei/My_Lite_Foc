@@ -1,0 +1,22 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# SS34-A
+#
+DEF SS34-A D 0 40 N N 1 F N
+F0 "D" 0 160 50 H V C CNN
+F1 "SS34-A" 0 360 50 H V C CNN
+F2 "kicad_lceda:SMA_L4.3-W2.6-LS5.2-RD" 0 -40 50 H I C CNN
+F3 "http://www.szlcsc.com/product/details_154532.html" 0 -240 50 H I C CNN
+F4 "C143201" 0 -440 50 H I C CNN "SuppliersPartNumber"
+F5 "std:a6c2b90d75ca46a094b21d53f481d0f4" 0 -440 50 H I C CNN "uuid"
+DRAW
+X A 2 200 0 150 L 50 50 1 1 I 
+X C 1 -200 0 150 R 50 50 1 1 I 
+P 6 1 1 6 -30 -60 -30 -70 -50 -70 -50 60 -70 60 -70 50 N
+P 4 1 1 6 50 60 -50 0 50 -70 50 60 F
+ENDDRAW
+ENDDEF
+
+#
+#End Library

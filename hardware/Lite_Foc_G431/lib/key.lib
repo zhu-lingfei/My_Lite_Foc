@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# 按键开关-2P-3*5*2
+#
+DEF 按键开关-2P-3*5*2 SW1 0 40 Y N 1 F N
+F0 "SW1" 0 -39835 50 H V C CNN
+F1 "按键开关-2P-3*5*2" 0 -39635 50 H V C CNN
+F2 "kicad_lceda:贴片按键-2P-3*5*2" 0 -40035 50 H I C CNN
+F3 "~" 0 -40235 50 H I C CNN
+F4 "~" 0 -40435 50 H I C CNN "SuppliersPartNumber"
+F5 "std:24b27eed1a2b4a15afe3b0510591da17" 0 -40435 50 H I C CNN "uuid"
+DRAW
+C 29900 -40050 20 1 1 6 N
+C 30100 -40050 20 1 1 6 N
+P 2 1 1 6 29890 -39990 30110 -39990 N
+X A 1 29700 -40050 200 R 50 50 1 1 I 
+X B 2 30300 -40050 200 L 50 50 1 1 I 
+P 2 1 1 6 30000 -39990 30000 -39940 N
+ENDDRAW
+ENDDEF
+
+#
+#End Library

@@ -1,0 +1,26 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# SMAJ30CA
+#
+DEF SMAJ30CA D 0 40 N N 1 F N
+F0 "D" 0 150 50 H V C CNN
+F1 "SMAJ30CA" 0 350 50 H V C CNN
+F2 "kicad_lceda:SMA_L4.4-W2.6-LS5.0-BI" 0 -50 50 H I C CNN
+F3 "http://www.szlcsc.com/product/details_86276.html" 0 -250 50 H I C CNN
+F4 "C85104" 0 -450 50 H I C CNN "SuppliersPartNumber"
+F5 "std:0ee1d9bdb075a0be36e4b08ef688f252" 0 -450 50 H I C CNN "uuid"
+DRAW
+P 2 1 1 6 20 50 0 50 N
+P 2 1 1 6 0 50 0 0 N
+P 2 1 1 6 0 0 0 -50 N
+P 2 1 1 6 0 -50 -30 -50 N
+X A 2 -200 0 200 R 50 50 1 1 I 
+X K 1 200 0 200 L 50 50 1 1 I 
+P 4 1 1 6 100 -50 0 0 100 50 100 -50 F
+P 4 1 1 6 -100 -50 0 0 -100 50 -100 -50 F
+ENDDRAW
+ENDDEF
+
+#
+#End Library
